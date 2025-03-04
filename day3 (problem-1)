@@ -1,1 +1,48 @@
-
+public class git {
+    public static int[][] flipAndInvertImage(int[][] image) {
+        int temp;
+        for(int i = 0; i < image.length; i++)
+        {
+            //flipping the image horizontally
+            int j = 0;
+            while(j < image.length/2)
+            {
+                temp = image[i][j];
+                image[i][j] = image[i][image.length-j-1];
+                image[i][image.length-j-1] = temp;
+                j++;
+            }
+            //inverting the image
+            j = 0;
+            while(j < image.length)
+            {
+                if(image[i][j] == 1)
+                {
+                    image[i][j] = 0;
+                }
+                else if(image[i][j] == 0)
+                {
+                    image[i][j] = 1;
+                }
+                j++;
+            }
+        }
+        return image;
+    }
+    public static void main(String[] arg)
+    {
+        int[][]  arr = { {1,1,0}, {1,0,1}, {0,0,0} };
+        int[][] flipImage = flipAndInvertImage(arr);
+        System.out.print("[");
+        for(int[] i : flipImage)
+        {
+            System.out.print("[");
+            for(int j : i)
+            {
+                System.out.print(j);
+            }
+            System.out.print("],");
+        }
+        System.out.print("]\n");
+    }
+} 
