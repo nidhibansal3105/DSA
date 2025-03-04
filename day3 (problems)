@@ -1,3 +1,5 @@
+//Question 1(inverting image) ------> T(n^2), S()
+
 public class main {
     public static int[][] flipAndInvertImage(int[][] image) {
         int temp;
@@ -46,3 +48,34 @@ public class main {
         System.out.print("]\n");
     }
 } 
+
+//Question 2(no. of equivalent pair) --------> T(n^2), S()
+
+public class main 
+ {
+      public int numEquivDominoPairs(int[][] dominoes) {
+          int pair = 0;
+          for(int i = 0; i < dominoes.length; i++)
+          {
+              for(int j = i+1; j < dominoes.length; j++)
+              {
+                  if((dominoes[i][0] == dominoes[j][0] && dominoes[i][1] == dominoes[j][1]) || (dominoes[i][0] == dominoes[j][1] && dominoes[i][1] == dominoes[j][0]))
+                  {
+                      pair++;
+                  }
+              }
+          }
+          return pair;
+      }
+      public static void main(String[] arg)
+      {
+          int[][] arr = new int[4][2];
+          arr = {{1,2},
+                 {2,1},
+                 {1,1},
+                 {3,2}};
+        int pairs = numEquivDominoPairs(arr);
+        System.out.println(pairs);
+      }
+ }
+
