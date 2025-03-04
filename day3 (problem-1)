@@ -1,4 +1,4 @@
-public class git {
+public class main {
     public static int[][] flipAndInvertImage(int[][] image) {
         int temp;
         for(int i = 0; i < image.length; i++)
