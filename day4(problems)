@@ -1,0 +1,26 @@
+//Question 1 -----------> T()
+
+//Question 2 -----------> T()
+
+import java.util.*;
+
+public class start {
+    public static int findMinDiff(ArrayList<Integer> arr, int m) {
+       Collections.sort(arr);
+       int min = arr.get(m-1) - arr.get(0);
+       for(int i = 1; i < arr.size()-m-1; i++)
+       {
+            if(min > (arr.get(m-1+i) - arr.get(i)))
+            {
+                min = arr.get(m-1+i) - arr.get(i);
+            }
+       }
+       return min;
+    }
+    public static void main (String[] arg)
+    {
+        ArrayList <Integer> arr = new ArrayList<>(Arrays.asList(7, 3, 2, 4, 9, 12, 56));
+        int min = findMinDiff(arr, 3);
+        System.out.println(min);
+    }
+}
