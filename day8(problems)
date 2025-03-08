@@ -1,1 +1,38 @@
+Question 1 --------> T = O(n) S = O(1)
 
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int k = 0;
+        int temp;
+        for(int i = 0; i < nums.length; i++)
+        {
+            if(nums[i] != 0)
+            {
+                temp = nums[i];
+                nums[i] = nums[k];
+                nums[k] = temp;
+                k++;
+            }
+        }
+    }
+}
+
+Question 2 ----------> T = O(n*n)  n = size of nums
+                       S = O(1)
+
+//couldn't figure out how to tackle the last failed case(due to time limit exeeded)
+
+class Solution {
+    public void rotate(int[] nums, int k) {
+        int replace;
+        for(int i = 1; i <= k; i++)
+        {
+            replace = nums[nums.length-1];
+            for(int j = nums.length-2; j >= 0; j--)
+            {
+                nums[j+1] = nums[j];
+            }
+            nums[0] = replace;
+        }
+    }
+}
