@@ -36,6 +36,30 @@ class Solution {
     }
 }
 
-Question 2 -------> 
+Question 2 -------> T = O(n) S = O(1)
 
+class Solution {
+    public void sortColors(int[] nums) {
+        int count0 = 0;
+        int count1 = 0;
+        for(int i = 0; i < nums.length; i++)
+        {
+            if(nums[i] == 0)
+                count0++;
+            else if(nums[i] == 1)
+                count1++;
+        }
+        for(int j = 0; j < nums.length; j++)
+        {
+            if(j >= 0 && j < count0)
+                nums[j] = 0;
+            else if(j >= count0 && j < count0+count1)
+                nums[j] = 1;
+            else
+                nums[j] = 2;
+        }
+    }
+}
+
+Question 3 ---------> 
 
