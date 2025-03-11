@@ -1,0 +1,24 @@
+Question 1 -------> T = O(n) S = O(n)
+
+class Solution {
+    public int[] rearrangeArray(int[] nums) {
+        int k = 0, j = 1;
+        int[] _nums = new int[nums.length];
+        for(int i = 0; i < nums.length; i++)
+        {
+            if(nums[i] > 0)
+            {
+                _nums[k] = nums[i];
+                k = k+2;
+            }
+            else
+            {
+                _nums[j] = nums[i];
+                j = j+2;
+            }
+        }  
+        return _nums;
+    }
+}
+
+Question 2 ----------> 
