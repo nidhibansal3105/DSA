@@ -21,6 +21,76 @@ class Solution {
     }
 }
 
+Question 2 ----------> T = O(N^2) S = O(1)
+
+class Solution {
+    public static void reverseArray(int[] arr)
+    {
+        int temp;
+        for(int i = 0; i < arr.length/2; i++)
+        {
+            temp = arr[i];
+            arr[i] = arr[arr.length-i-1];
+            arr[arr.length-i-1] = temp;
+        }
+    }
+    public static void sort(int[] arr, int idx)
+    {
+        int k,temp;
+        for(int i = idx+1; i < arr.length; i++)
+        {
+            k = i-1;
+            while(k >= idx)
+            {
+                if(arr[i] > arr[k])
+                    break;
+                k--;
+            }
+            temp = arr[i];
+            for(int j = i-1; j >= k+1; j--)
+            {
+                arr[j+1] = arr[j];
+            }
+            arr[k+1] = temp;
+        }
+    }
+    public void nextPermutation(int[] nums) {
+        int j = nums.length-2;
+        int mini = -1, min;
+        int temp;
+        while(j >= 0)
+        {
+            if(nums[j] < nums[j+1])
+                break;
+            j--;
+        }
+        if(j == -1)
+        {
+            reverseArray(nums);
+        }
+        else
+        {
+            min = Integer.MAX_VALUE;
+            for(int i = nums.length-1; i >= j+1; i--)
+            {
+                if(nums[i] > nums[j])
+                {
+                    if(nums[i]< min)
+                    {
+                        min = nums[i];
+                        mini = i;
+                    }
+                }
+            }
+            temp = nums[j];
+            nums[j] = nums[mini];
+            nums[mini] = temp;
+
+            sort(nums, j+1);
+        }
+    }
+}
+
 Question 3 ----------> T = O(n) S = O(1)
 
 class Solution {
