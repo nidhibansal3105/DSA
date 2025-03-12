@@ -1,0 +1,90 @@
+
+Question 2 ------> T = O(n^2) S = O(1)
+
+class Solution {
+    public static void reverse(int[] arr)
+    {
+        int temp;
+        int n = arr.length;
+        for(int i = 0; i < n/2; i++)
+        {
+            temp = arr[i];
+            arr[i] = arr[n-1-i];
+            arr[n-1-i] = temp;
+        }
+    }
+    public static void transpose(int[][] arr)
+    {
+        int temp;
+        int n = arr[0].length;
+        for(int i = 0; i < n; i++)
+        {
+            for(int j = i; j < n; j++)
+            {
+                temp = arr[i][j];
+                arr[i][j] = arr[j][i];
+                arr[j][i] = temp;
+            }
+        }
+    }
+    public void rotate(int[][] matrix) {
+        transpose(matrix);
+        for(int i = 0; i < matrix[0].length; i++)
+        {
+            reverse(matrix[i]);
+        }
+    }
+}
+
+Question 3 --------> T = O(n*m) S = O(n*m)
+
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+        int i = 0, j = 0, k = 0;
+        int n = matrix[0].length;
+        int m = matrix.length;
+        int count = 1;
+        List<Integer> list = new ArrayList<>();
+        list.add(matrix[i][j]);
+        while(k < (m+1)/2)
+        {
+            while(j < n-1-k)
+            {
+                j++;
+                list.add(matrix[i][j]);
+                count++;
+            }
+            if(count == n*m)
+                break;
+            
+            while(i < m-1-k)
+            {
+                i++;
+                list.add(matrix[i][j]);
+                count++;
+            }
+            if(count == n*m)
+                break;
+
+            while(j > k)
+            {
+                j--;
+                list.add(matrix[i][j]);
+                count++;
+            }
+            if(count == n*m)
+                break;
+
+            while(i > k+1)
+            {
+                i--;
+                list.add(matrix[i][j]);
+                count++;
+            }
+            if(count == n*m)
+                break;
+            k++;
+        }
+        return list;
+    }
+}
