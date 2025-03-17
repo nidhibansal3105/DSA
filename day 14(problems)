@@ -1,0 +1,123 @@
+Question 1 ---------> T = O(logn) S = O(1)
+
+class Solution {
+    int floorSqrt(int n) {
+       int low = 1; 
+       int high = n;
+       int mid;
+       int ans = 0;
+       while(low <= high)
+       {
+           mid = (low+high)/2;
+           if(mid*mid <= n)
+           {
+               ans = mid;
+               low = mid+1;
+           }
+           else
+           {
+               high = mid-1;
+           }
+       }
+       return ans;
+    }
+}
+
+Question 2 ----------> T = O(nlog(max(piles))) S = O(1)
+
+class Solution {
+    public static long total(int[] piles, int mid)
+    {
+        long rem = 0; 
+        long div = 0;
+        long ans = 0;
+        for(int i = 0; i < piles.length; i++)
+        {
+            rem = piles[i]%mid;
+            div = piles[i]/mid;
+            if(rem == 0)
+                ans += div;
+            else
+                ans += div+1;
+        }
+        return ans;
+    }
+    public int minEatingSpeed(int[] piles, int h) {
+        int k = 0;
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+        while(k < piles.length)
+        {
+            max = (max < piles[k]) ? piles[k]:max;
+            k++;
+        }
+        int low = 1;
+        int high = max;
+        int mid,ans = 0;
+        long totalHours = 0;
+        while(low <= high)
+        {
+            mid = (low+high)/2;
+            totalHours = total(piles,mid);
+            if(totalHours <= h)
+            {
+                ans = mid;
+                high = mid-1;
+            }
+            else{
+                low = mid+1;
+            }
+        }
+        return ans;
+    }
+}
+
+Question 3 --------> T = O(nlog(max(nums))) S = O(1)
+
+class Solution {
+    public static long check(int[] nums, int mid)
+    {
+        long ans = 0;
+        for(int p : nums)
+        {
+            if(p%mid == 0)
+            {
+                ans += p/mid;
+            }
+            else
+            {
+                ans += p/mid+1;
+            }
+        }
+        return ans;
+    }
+    public static int maximum(int[] nums)
+    {
+        int k = 0;
+        int max = Integer.MIN_VALUE;
+        while(k < nums.length)
+        {
+            max = (int)(Math.max(nums[k],max));
+            k++;
+        }
+        return max;
+    }
+    public int smallestDivisor(int[] nums, int threshold) {
+        int low = 1;
+        int high = maximum(nums);
+        int mid;
+        while(low <= high)
+        {
+            mid = low + (high-low)/2;
+            if(check(nums,mid) <= threshold)
+            {
+                high = mid-1;
+            }
+            else
+            {
+                low = mid+1;
+            }
+        }
+        return low;
+    }
+}
