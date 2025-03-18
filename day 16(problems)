@@ -1,0 +1,40 @@
+Question 1 --------> T = O(n) S = O(1)
+
+class Solution {
+    public static void reverseArray(int[] arr, int start, int end)
+    {
+        int temp;
+        for(int i = start; i <= (end+start-1)/2; i++)
+        {
+            temp = arr[i];
+            arr[i] = arr[end-i+start];
+            arr[end-i+start] = temp;
+        }
+    }
+    public void rotate(int[] nums, int k) {
+        k = k%nums.length;
+        reverseArray(nums, 0, nums.length-1);
+        reverseArray(nums, 0, k-1);
+        reverseArray(nums, k, nums.length-1);
+    }
+}
+
+Question 2 ----------> T = O(n) S = O(1)
+
+class Solution {
+    public int firstUniqChar(String s) {
+        int[] counter = new int[26];
+        for(int i = 0; i < s.length(); i++)
+        {
+            counter[(int)(s.charAt(i))-97]++;
+        }
+        for(int i = 0; i < s.length(); i++)
+        {
+            if(counter[(int)(s.charAt(i))-97] == 1)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+}
