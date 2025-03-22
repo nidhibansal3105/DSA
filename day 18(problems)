@@ -1,0 +1,26 @@
+Question 1 ------> T = O(n) S = O(1)
+
+class Solution {
+    public boolean isAnagram(String s, String t) 
+    {
+        int[] counter = new int[26];
+        int[] count = new int[26];
+        if(s.length() != t.length())
+            return false;
+        for(char ch : s.toCharArray())
+        {
+            counter[ch - 'a']++;
+        }
+        for(char ch : t.toCharArray())
+        {
+            count[ch - 'a']++;
+        }
+        for(int i = 0; i < 25; i++)
+        {
+            if(count[i] != counter[i])
+                return false;
+        }
+
+        return true;
+    }
+}
