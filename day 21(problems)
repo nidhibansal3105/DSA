@@ -1,0 +1,28 @@
+Question 2 ---------> T = O(n^3) S = O(n)
+
+class Solution {
+    public static boolean palindrome(String str)
+    {
+        for(int i = 0; i < str.length()/2; i++)
+        {
+            if(str.charAt(i) != str.charAt(str.length()-i-1))
+                return false;
+        }
+        return true;
+    }
+    public String longestPalindrome(String s) {
+        String out = new String();
+        for(int k = s.length(); k >= 1; k--)
+        {
+            for(int i = 0; i <= s.length()-k; i++)
+            {
+                if(palindrome(s.substring(i,i+k)))
+                {
+                    out = s.substring(i,i+k);
+                    return out;
+                }
+            }
+        }
+        return "";
+    }
+}
