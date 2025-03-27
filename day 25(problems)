@@ -1,0 +1,57 @@
+Question 1 -----> 
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public void deleteNode(ListNode node) {
+        ListNode next = node.next;
+        int tempo;
+        //Swapping values
+        tempo = node.val;
+        node.val = next.val;
+        next.val = tempo;
+
+        //changing address
+        node.next = next.next;
+        next.next = null;
+    }
+}
+
+Question 2 ---->
+
+/*
+class Node{
+    int data;
+    Node next;
+
+    Node(int x){
+        data = x;
+        next = null;
+    }
+}
+*/
+class Solution {
+    // Function to insert a node at the end of the linked list.
+    Node insertAtEnd(Node head, int x) {
+        Node add = new Node(x);
+        if(head == null)
+        {
+            head = add;
+        }
+        else{
+            Node temp = head;
+            while(temp.next != null)
+            {
+                temp = temp.next;
+            }
+            temp.next = add;
+        }
+        return head;
+    }
+}
